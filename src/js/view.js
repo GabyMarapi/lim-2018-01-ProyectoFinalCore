@@ -1,4 +1,5 @@
 const paintVisit = document.querySelector('#paintVisit');
+
 const logOut = document.querySelector('#logOut');
 
 logOut.addEventListener('click', (e) => {
@@ -54,7 +55,7 @@ const paintingVisit = (visitId) => {
             <p>Razon de visita:  ${visitId.val().reasonForVisit}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>

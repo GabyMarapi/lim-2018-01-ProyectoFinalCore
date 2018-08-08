@@ -25,25 +25,26 @@
         <div class="card-body">
           <form class="needs-validation" novalidate>
             <div class="form-group">
-              <label for="validationTooltipUsername">Correo electrónico</label>
-              <input type="email" class="form-control" id="validationTooltipUsername" aria-describedby="emailHelp" placeholder="Correo electrónico">
+              <label for="validationCustomUsername">Correo electrónico</label>
+              <input type="email" class="form-control" id="validationCustomUsername" aria-describedby="emailHelp" placeholder="Correo electrónico" required>
               <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
-              <div class="invalid-tooltip">
-                Por favor elija un nombre de usuario único y válido.
+              <div id="emailInvalid" class="invalid-feedback">
+                Por favor elija un correo válido.
               </div>
             </div>
             <div class="form-group">
               <label for="validationTooltipPassword">Contraseña</label>
-              <input type="password" class="form-control" id="validationTooltipPassword" placeholder="Contraseña">
-              <div class="invalid-tooltip">
+              <input type="password" class="form-control" id="validationTooltipPassword" placeholder="Contraseña" required>
+              <div id="passwordInvalid" class="invalid-feedback">
                 Por favor, elija una contraseña válida.
               </div>
             </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Verifícame</label>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+              <label class="custom-control-label" for="customControlValidation1">Verifícame</label>
+              <div id="checkboxInvalid" class="invalid-feedback">Debe aceptar antes de enviar.</div>
             </div>
-            <button id="logIn" type="button" class="btn btn-dark">Enviar</button>
+            <button id="logIn" type="button" class="btn btn-dark">Ingresar</button>
           </form>
         </div>
       </div>

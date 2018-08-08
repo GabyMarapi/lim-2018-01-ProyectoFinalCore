@@ -6,7 +6,8 @@ const name = document.querySelector('#nameVisit');
 const dni = document.querySelector('#dniVisit');
 const setFile = document.querySelector('#selectPhoto');
 const reasonForVisit = document.querySelector('#reasonForVisit');
-const observations = document.querySelector('#observations');
+const company = document.querySelector('#company');
+const employeeSelect = document.querySelector('#employee');
 const submitVisit = document.querySelector('#submit');
 const takePhoto = document.querySelector('#takePhoto');
 const getOut = document.querySelector('#getOut');
@@ -16,6 +17,26 @@ const video = document.getElementById('player'),
   capture = document.getElementById('capture'),
   canvas = document.getElementById('canvas'),
   player = document.getElementById('player');
+const nameInvalid = document.querySelector('#nameInvalid');
+const documentInvalid = document.querySelector('#documentInvalid');
+const photoInvalid = document.querySelector('#photoInvalid');
+const companyInvalid = document.querySelector('#companyInvalid');
+const hostInvalid = document.querySelector('#hostInvalid');
+const reasonInvalid = document.querySelector('#reasonInvalid');
+const checkbox = document.querySelector('#customControlValidation1');
+const checkboxInvalid = document.querySelector('#checkboxInvalid');
+
+const logOut = document.querySelector('#logOut');
+
+logOut.addEventListener('click', (e) => {
+  firebase.auth().signOut().then(function () {
+    if (e.preventDefault) {
+      window.location.assign('index.html')
+    }
+  }).catch(function (error) {
+
+  });
+})
 
 takePhoto.addEventListener('click', () => {
   //Activando la camara
@@ -62,7 +83,7 @@ const dataURItoBlob = (dataURI) => {
 
 //Función para guardar la foto
 const saveVisitorPhoto = (blob) => {
-  var photoKey = firebase.database().ref().child('photo').push().key;
+  let photoKey = firebase.database().ref().child('photo').push().key;
   firebase.storage().ref().child(photoKey).put(blob).then(result => {
     let url = result.metadata.downloadURLs[0];
     newVisitEntry(photoKey, url);
@@ -113,13 +134,16 @@ company.addEventListener('change', () => {
     });
 });
 
-const newVisitEntry = (photo, photoUrl) => {
-  submitVisit.addEventListener('click', () => {
-    const selectedCompany = company.options[company.selectedIndex].text;
-    const selectedEmployee = employee.options[employee.selectedIndex].text;
-    entryDate = new Date().toString("yyyy-MM-dd");
-    entryTime = new Date().toString("hh:mm");
+// const newVisitEntry = (photo, photoUrl) => {
+submitVisit.addEventListener('click', newVisitEntry = (photo, photoUrl) => {
+  const selectedCompany = company.options[company.selectedIndex].text;
+  const selectedEmployee = employee.options[employee.selectedIndex].text;
+  console.log(selectedEmployee)
 
+  entryDate = new Date().toString("yyyy-MM-dd");
+  entryTime = new Date().toString("hh:mm");
+
+  if (!!name.value && !!dni.value && !!photo && !!photoUrl && !!selectedCompany && !!selectedEmployee && !!reasonForVisit.value) {
     newVisit(entryDate, entryTime, name.value, dni.value, photo, photoUrl, selectedCompany, selectedEmployee, reasonForVisit.value);
     const dbRefPost = firebase.database().ref().child('employees');
     dbRefPost.once('value', visitKey => {
@@ -132,8 +156,64 @@ const newVisitEntry = (photo, photoUrl) => {
     setTimeout(() => {
       window.location.href = 'successful.html';
     }, 1000)
-  });
-};
+  } else {
+    if (!name.value) {
+      nameInvalid.style.display = 'block';
+    } else {
+      nameInvalid.style.display = 'none';
+    }
+    if (!dni.value || !/^([0-9]{8,9})*$/.test(dni.value)) {
+      documentInvalid.style.display = 'block';
+    } else if(!!dni.value && /^([0-9]{8,9})*$/.test(dni.value)){
+      documentInvalid.style.display = 'none';
+    }
+    if (!photo || !photoUrl) {
+      photoInvalid.style.display = 'block';
+    } else {
+      photoInvalid.style.display = 'none';
+    }
+    if (selectedCompany === 'Empresa comunera') {
+      companyInvalid.style.display = 'block';
+    } else {
+      companyInvalid.style.display = 'none';
+    }
+    if (selectedEmployee === 'Comunero' || selectedEmployee === 'Trabajador') {
+      hostInvalid.style.display = 'block';
+    } else {
+      hostInvalid.style.display = 'none';
+    }
+    if (!reasonForVisit.value) {
+      reasonInvalid.style.display = 'block';
+    } else {
+      reasonInvalid.style.display = 'none';
+    }
+    if (checkbox.checked === false) {
+      checkboxInvalid.style.display = 'block';
+    }
+  }
+
+});
+
+checkbox.addEventListener('click', () => {
+  if (checkbox.checked == true) {
+    checkboxInvalid.style.display = "none";
+  }
+});
+name.addEventListener('keyup', () => {
+  nameInvalid.style.display = "none";
+});
+dni.addEventListener('keyup', () => {
+  documentInvalid.style.display = "none";
+});
+reasonForVisit.addEventListener('keyup', () => {
+  reasonInvalid.style.display = "none";
+});
+company.addEventListener('change', () => {
+  companyInvalid.style.display = "none";
+});
+employeeSelect.addEventListener('change', () => {
+  hostInvalid.style.display = "none";
+});
 
 sendMail = (email, name, visitorName) => {
   $.ajax({

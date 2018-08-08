@@ -43,60 +43,73 @@
       </nav>
     </div>
     <div class="container">
-      <form>
+      <form class="needs-validation" novalidate>
         <div class="form-group">
           <label for="name">Nombre</label>
           <input id="nameVisit" type="text" class="form-control" placeholder="">
+          <div id="nameInvalid" class="invalid-feedback">
+            Por favor escriba el nombre del visitante.
+          </div>
         </div>
         <div class="form-group">
           <label for="dni">DNI / Carnet de extranjería</label>
           <input id="dniVisit" type="text" class="form-control">
+          <div id="documentInvalid" class="invalid-feedback">
+            Por favor digite el número de DNI o carnet de extranjería del visitante correctamente.
+          </div>
         </div>
         <div class="form-group">
           <label for="photo">Foto</label>
-          <!-- <div class="custom-file"> -->
-            <button id="takePhoto" type="button" class="btn text-dark btn-padding" data-toggle="modal" data-target="#exampleModal">
-              Tomar foto
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tomar foto</h5>
-                    <button id="btnClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div id="camera">
-                      <div class="center">
-                        <video id="player"></video>
-                      </div>
-                    </div>
+          <button id="takePhoto" type="button" class="btn text-dark btn-padding" data-toggle="modal" data-target="#exampleModal">
+            Tomar foto
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Tomar foto</h5>
+                  <button id="btnClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="camera">
                     <div class="center">
-                      <canvas id="canvas"></canvas>
+                      <video id="player"></video>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button id="getOut" type="button" class="btn btn-outline-warning" data-dismiss="modal">Salir</button>
-                    <button id="capture" type="button" class="btn btn-outline-success">Capturar</button>
+                  <div class="center">
+                    <canvas id="canvas"></canvas>
                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button id="getOut" type="button" class="btn btn-outline-warning" data-dismiss="modal">Salir</button>
+                  <button id="capture" type="button" class="btn btn-outline-success">Capturar</button>
                 </div>
               </div>
             </div>
-          <!-- </div> -->
+          </div>
+          <div id="photoInvalid" class="invalid-feedback">
+            Por favor asegúrese de haber tomado la foto respectiva.
+          </div>
         </div>
         <div class="form-group">
           <label for="">Empresa</label>
           <select id="company" class="form-control">
             <option selected disabled>Empresa comunera</option>
           </select>
+          <div id="companyInvalid" class="invalid-feedback">
+            Por favor escoja la empresa.
+          </div>
         </div>
         <div class="form-group">
           <label for="">Anfitrión</label>
           <select id="employee" class="form-control">
             <option selected disabled>Comunero</option>
           </select>
+          <div id="hostInvalid" class="invalid-feedback">
+            Por favor escoja el anfitrión.
+          </div>
         </div>
         <div class="form-group">
           <div class="input-group">
@@ -104,15 +117,15 @@
               <span class="input-group-text">Motivo de visita</span>
             </div>
             <textarea id="reasonForVisit" class="form-control" aria-label="With textarea"></textarea>
+            <div id="reasonInvalid" class="invalid-feedback">
+              Por favor escriba el motivo de la visita.
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Verifícame
-            </label>
-          </div>
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+          <label class="custom-control-label" for="customControlValidation1">Verifícame</label>
+          <div id="checkboxInvalid" class="invalid-feedback">Debe aceptar antes de enviar.</div>
         </div>
         <div class="right">
           <button id="submit" type="button" class="btn bg-dark">Enviar</button>

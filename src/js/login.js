@@ -1,6 +1,11 @@
 const logIn = document.querySelector('#logIn');
-const getEmail = document.querySelector('#validationTooltipUsername');
+const getEmail = document.querySelector('#validationCustomUsername');
 const getPassword = document.querySelector('#validationTooltipPassword');
+const checkbox = document.querySelector('#customControlValidation1');
+const form = document.getElementsByClassName('needs-validation');
+const checkboxInvalid = document.querySelector('#checkboxInvalid');
+const emailInvalid = document.querySelector('#emailInvalid');
+const passwordInvalid = document.querySelector('#passwordInvalid');
 
 window.onload = () => {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -25,5 +30,27 @@ logIn.addEventListener('click', () => {
       }
     }
   }
-  signInUser(getEmail.value, getPassword.value,callback);
+  if (checkbox.checked === true && getEmail.value === 'admin@gmail.com' && getPassword.value === '123456') {
+    signInUser(getEmail.value, getPassword.value, callback);
+  } else {
+    if (checkbox.checked === false) {
+      checkboxInvalid.style.display = 'block';
+    }
+    if (!getEmail.value || getEmail.value !== 'admin@gmail.com') {
+      emailInvalid.style.display = 'block';
+    }else{
+      emailInvalid.style.display = 'none';
+    }
+    if (!getPassword.value || getPassword.value !== '123456') {
+      passwordInvalid.style.display = 'block';
+    }else{
+      passwordInvalid.style.display = 'none';
+    }
+  }
 })
+
+checkbox.addEventListener('click', () => {
+  if (checkbox.checked == true) {
+    checkboxInvalid.style.display = "none";
+  }
+});

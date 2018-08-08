@@ -6,6 +6,45 @@ El registro de visitantes en una empresa en América Latina es un proceso tedios
 ## Introducción
 En este proyecto la empresa de coworking donde opera Laboratoria en tu ciudad desea reinventar su proceso de registro de visitantes. 
 
+## Demo
+Primer paso:
+  Ingresa con 
+  * Correo: admin@gmail.com
+  * Contraseña: 123456
+
+  Verifica la casilla y luego le das click en INGRESAR.
+
+ ![registro](https://fotos.subefotos.com/aeb631352e952ae672daeda8a101da6ao.png "registro")
+
+Segundo paso:
+  En primera instancia observarás el reporte como se puede ver en la siguiente imagen.
+
+ ![reporte](https://fotos.subefotos.com/1feab4bb2a8085a203a802f019a43462o.png "reporte")
+
+Tercer paso:
+  Si deseas registrar un nuevo visitante, procede a darle click en NUEVO VISITANTE para luego rellenar los campos solicitados. Y despues dale click en ENVIAR.
+
+ ![visitante](https://fotos.subefotos.com/e632d5fbbf95bd4670b08a895d93b472o.png "visitante")
+
+Cuarto paso:
+  Si completaste el registro con éxito te redirigirás automáticamente a la siguiente página.
+
+ ![exito](https://fotos.subefotos.com/69704fa26dfa9a64411f00ac1eef883eo.png "exito")
+
+Quinto paso:
+  Si deseas ver más información de los visitantes, en el reporte, dale click a su nombre.
+
+ ![visitanteInfo](https://fotos.subefotos.com/578882ec253c1512cfe2ef4c1b0587ddo.png "visitanteInfo")
+
+Sexto paso:
+  Si deseas agregar la hora de salida del usuario dale click en el botón rojo SALIR.
+
+ ![salida](https://fotos.subefotos.com/bb109fc8889d25865bf18501388f7fe4o.png "salida")
+ 
+Séptimo paso:
+  Si deseas salir de la aplicación, haz click en CERRAR SESIÓN.
+
+
 ## Entrevistas
 
 Las entrevistas nos permitieron remodelar el flujo del proceso de registro de visitantes que al principio estabamos enfocados, en función a ello es se marcaron dos hitos importantes para el desarrollo del presente proyecto el primero antes de la entrevista y la segunda despues. El primero, ofrecia una solución tecnológica basado en un aplicativo en el que el usuario visitante tenia que registrar sus datos personales en el formulario de visitantes. El segundo, se determinó según a las entrevistas realizadas planteando una propuesta con enfoque al proceso de registro de visitantes que actualmente comunal maneja, donde el recepcionista es quien cumple el rol del registro del visitante.
@@ -76,14 +115,12 @@ En base a la premisa se desglozan las siguientes historias de usuario.
 
   ### Usuario recepcionista
   * Yo como usuario recepcionista quiero poder registrar a los visitantes.
-  * Yo como usuario recepcionista quiero poder notificar a la persona que vengo a visitar para que sepa que he llegado.
+  * Yo como usuario recepcionista quiero poder notificar al anfitrión que su visita ha llegado.
+  * Yo como usuario recepcionista quiero poder ver todas las visitas realizadas para llevar un control de las visitas.
+
 
   ### Usuario visitando / empleado
   * Yo como usuario visitado (empleado) quiero que me llegue una notificacion a mi correo para saber que mi visita ha llegado.
-
-  ### Usuario administrador
-  * Yo como usuario administrador quiero poder ver todas las visitas realizadas para llevar un control de las visitas.
-
 
 
 ## Prototipo
